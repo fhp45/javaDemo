@@ -38,20 +38,20 @@ public class ReentrantReadWriteLockDemo {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("我读完了"+Thread.currentThread().getName());
+        System.out.println("我读完了"+Thread.currentThread().getName()+new Date());
         readLock.unlock();
     }
 
     //写：在写的时候，持续20秒，这是看不到任何输出，其他线程都不能获得锁。
     public void write(){
         writeLock.lock();
-        System.out.println("我在写，会睡眠20秒。其他线程不能读，也不能写:"+Thread.currentThread().getName());
+        System.out.println("我在写，会睡眠20秒。其他线程不能读，也不能写:"+Thread.currentThread().getName()+new Date());
         try {
             TimeUnit.MILLISECONDS.sleep(20000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("我写完了"+Thread.currentThread().getName());
+        System.out.println("我写完了"+Thread.currentThread().getName()+new Date());
         writeLock.unlock();
     }
 }
