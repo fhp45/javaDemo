@@ -6,7 +6,7 @@ Queue的分类：
     通过内部加锁实现的queue：
     ConcurrentLinkedQueue
     通过阻塞实现的queue：
-    BlockingQueue-> LinkedBlockingQueue,ArrayBlockingQueue
+    BlockingQueue-> LinkedBlockingQueue,ArrayBlockingQueue,DelayedQueue,TransferQueue
 有界无界分类：
     有界的：
     ArrayBlockingQueue,LinkedBlockingQueue在初始化时指定容量，也可以作为有界队列

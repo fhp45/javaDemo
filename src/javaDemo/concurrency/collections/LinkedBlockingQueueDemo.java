@@ -8,6 +8,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * BlockingQueue和ConcurrentQueue支持并发的区别在于：
  * ConcurrentQueue是基于更底层的CAS实现的。
  * LinkedBlockingDeque无非是用一个独占锁来保持线程安全，然后用Condition来做阻塞操作
+ * 在使用put的时候queue满了才会阻塞，使用offer时，如果queue满了则返回false
  */
 public class LinkedBlockingQueueDemo {
 
