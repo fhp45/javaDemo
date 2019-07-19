@@ -1,2 +1,3 @@
 包含Atomic包下的原子类的使用
-只列出了AtomicInteger和AtomicBoolean的使用，其他类似
+原子类提供的一系列原子操作compareAndSet, addAndGet等都是基于CAS实现。
+只列出了AtomicInteger和AtomicBoolean的使用，其他使用类似

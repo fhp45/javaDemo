@@ -36,3 +36,5 @@ SynchronousQueue则干脆不能缓存任何元素。
 5、如果我们需要实现的是两个线程之间接力性（handoff）的场景，你可能会选择CountDownLatch，但是SynchronousQueue也是完美符合这种场景的，而且线程间协调和数据传输统一起来，代码更加规范
 
 6、可能令人意外的是，很多时候SynchronousQueue的性能表现，往往大大超过其他表现，尤其是在队列元素较小的场景。
+
+

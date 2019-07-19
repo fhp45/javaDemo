@@ -34,37 +34,39 @@ public class DelayQueueDemo {
             System.out.println(queue.take().toString());
         }
     }
-}
 
 
-class MyDelayed implements Delayed {
 
-    //可以使用本对象的时间
-    private long expireTime;
+    static class MyDelayed implements Delayed {
 
-    public MyDelayed(long expireTime) {
-        this.expireTime = expireTime;
-    }
+        //可以使用本对象的时间
+        private long expireTime;
 
-    @Override
-    public long getDelay(TimeUnit unit) {
-        return unit.convert(expireTime - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
-    }
+        public MyDelayed(long expireTime) {
+            this.expireTime = expireTime;
+        }
 
-    @Override
-    public int compareTo(Delayed o) {
+        @Override
+        public long getDelay(TimeUnit unit) {
+            return unit.convert(expireTime - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
+        }
 
-        if (this.getDelay(TimeUnit.MILLISECONDS) - o.getDelay(TimeUnit.MILLISECONDS) > 0) {
-            return 1;
-        } else if (this.getDelay(TimeUnit.MILLISECONDS) - o.getDelay(TimeUnit.MILLISECONDS) == 0) {
-            return 0;
-        } else {
-            return -1;
+        @Override
+        public int compareTo(Delayed o) {
+
+            if (this.getDelay(TimeUnit.MILLISECONDS) - o.getDelay(TimeUnit.MILLISECONDS) > 0) {
+                return 1;
+            } else if (this.getDelay(TimeUnit.MILLISECONDS) - o.getDelay(TimeUnit.MILLISECONDS) == 0) {
+                return 0;
+            } else {
+                return -1;
+            }
+        }
+
+        @Override
+        public String toString() {
+            return expireTime+"";
         }
     }
-
-    @Override
-    public String toString() {
-        return expireTime+"";
-    }
 }
+

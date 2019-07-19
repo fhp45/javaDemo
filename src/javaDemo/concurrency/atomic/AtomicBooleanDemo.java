@@ -13,7 +13,7 @@ public class AtomicBooleanDemo {
 
     private AtomicBoolean atomicTrue = new AtomicBoolean(true);
 
-    //使用非原子boolean时，会由于判断和赋值的飞原子性，出现并发错误
+    //使用非原子boolean时，会由于判断和赋值的非原子性，出现并发错误
     public void alwaysTrue() {
         //下面的代码看起来应该是永远输出true的，运行一下你就知道
         if (isTrue) {
@@ -25,7 +25,7 @@ public class AtomicBooleanDemo {
         }
     }
 
-    //使用AtomicBoolean时，避免了在判断和修改之间时发生并发错误
+    //使用AtomicBoolean时，避免了在判断和修改之间时发生并发错误。但是下面的代码也并总是输出true，因为程序在System.out.println和compareAndSet的两个操作不是原子的
     public void alwaysTrueAtomic(){
         if(atomicTrue.compareAndSet(true,false)){
             System.out.println(atomicTrue.get() == false);
